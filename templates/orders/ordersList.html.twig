@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-md-12">
+                <h2>Order list</h2>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Montant</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <th scope="row">{{ order.number }}</th>
+                        <td>{{ order.amount }} €</td>
+                        <td>{{ order.status}}</td>
+                        <td>{{ order.name }}
+                        <td><a href="{{ path('orders_detail', {id: order.number}) }}" class="btn btn-primary">Voir</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
